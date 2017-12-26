@@ -1,0 +1,53 @@
+conky.config = {
+-- .conkyrc - Edited from various examples compiled from the Web
+-- by MaxKh
+
+-- --- Window Layout & Options --- #
+
+	own_window = true,
+	own_window_class = 'Conky',
+	own_window_type = 'normal',
+	own_window_argb_visual = true,
+	own_window_transparent = true,
+	own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+	background = true,
+
+	double_buffer = true,
+	use_xft = true,
+	alignment = 'top_left',
+	gap_x = 440,
+	gap_y = 700,
+
+-- --- Colours, Sizes, Fonts & Margins --- #
+	update_interval = 1.0,
+	maximum_width = 700,
+	minimum_width = 700, minimum_height = 100,
+
+	stippled_borders = 3,
+	border_width = 10,
+
+-- --- Text --- #
+	draw_outline = false,
+	draw_borders = false,
+	uppercase = false,
+	draw_shades = false,
+	override_utf8_locale = true,
+	text_buffer_size = 2048,
+	font = 'Play:size=10',
+
+	color1 = '#bbbbbb',
+	color2 = '#08bcd7',
+	color3 = '#73a31b',
+
+};
+
+conky.text = [[
+${font Play:size=14:bold}${color3}Shell Shortcuts ${hr 2}${font}${voffset 8}
+${color1}
+${color2}Alt + f${color1}${goto 80}Move cursor forward one word on the current line
+${color2}Alt + b${color1}${goto 80}Move cursor backward one word on the current line
+${color2}Alt + d${color1}${goto 80}Delete one word after the cursor
+
+${color2}Ctrl + w${color1}${goto 80}Delete one word before the cursor
+${color2}Ctrl + d${color1}${goto 80}Delete all to the end
+${color2}Ctrl + u${color1}${goto 80}Delete all from the beginning]];

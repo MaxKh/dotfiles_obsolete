@@ -1,0 +1,92 @@
+conky.config = {
+-- .conkyrc - Edited from various examples compiled from the Web
+-- by MaxKh
+
+-- --- Window Layout & Options --- #
+
+	own_window = true,
+	own_window_class = 'Conky',
+	own_window_type = 'normal',
+	own_window_argb_visual = true,
+	own_window_transparent = true,
+	own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+	background = true,
+
+	double_buffer = true,
+	use_xft = true,
+	alignment = 'top_left',
+	gap_x = 1170,
+	gap_y = 50,
+
+-- --- Colours, Sizes, Fonts & Margins --- #
+	update_interval = 1.0,
+	maximum_width = 250,
+	minimum_width = 300, minimum_height = 400,
+
+	stippled_borders = 3,
+	border_width = 10,
+
+-- --- Text --- #
+	draw_outline = false,
+	draw_borders = false,
+	uppercase = false,
+	draw_shades = false,
+	override_utf8_locale = true,
+	text_buffer_size = 2048,
+	font = 'Play:size=10',
+
+	color1 = '#bbbbbb',
+	color2 = '#08bcd7',
+	template2 = '08bcd7',
+	color3 = '#73a31b',
+
+	cpu_avg_samples = 3,
+	diskio_avg_samples = 3,
+	net_avg_samples = 3,
+	if_up_strictness = 'address',
+
+};
+
+conky.text = [[
+${font Play:size=14:bold}${color3}System Info ${hr 2}${font}${voffset 8}
+${color1}Uptime:${alignr}${color1}${uptime}
+${color1}Kernel:${alignr}${color1}${kernel}
+
+${font Play:size=14:bold}${color3}CPU Activity ${hr 2}${font}${voffset 8}
+${color1}Load:${alignr}${color1}${cpu cpu0}%
+${color1}${cpugraph cpu0 40,250 08bcd7 08bcd7}
+
+${if_up wlan0}${font Play:size=14:bold}${color3}WiFi Activity ${hr 2}${font}${voffset 8}
+${color1}In:${alignr}${color1}${downspeed wlan0} / ${totaldown wlan0}
+${color1}${downspeedgraph wlan0 40,250  08bcd7 08bcd7}
+${color1}Out:${alignr}${color1}${upspeed wlan0} / ${totalup wlan0}
+${color1}${upspeedgraph wlan0 40,250  08bcd7 08bcd7}${else}${font Play:size=14:bold}${color3}Ethernet Activity ${hr 2}${font}${voffset 8}
+${color1}In:${alignr}${color1}${downspeed eth0} / ${totaldown eth0}
+${color1}${downspeedgraph eth0 40,250  08bcd7 08bcd7}
+${color1}Out:${alignr}${color1}${upspeed eth0} / ${totalup eth0}
+${color1}${upspeedgraph eth0 40,250  08bcd7 08bcd7}${endif}
+
+${font Play:size=14:bold}${color3}HDD Activity ${hr 2}${font}${voffset 8}
+${color1}Read:${alignr}${color1}${diskio_read sda} / ${execpi 5 ~/startup/disk_total.py -d sda -m r}
+${color1}${diskiograph_read 40,250  08bcd7 08bcd7}
+${color1}Write:${alignr}${color1}${diskio_write sda} / ${execpi 5 ~/startup/disk_total.py -d sda -m w}
+${color1}${diskiograph_write 40,250  08bcd7 08bcd7}
+
+${voffset 6}${font Play:size=14:bold}${color3}Process Activity ${hr 2}${font}${voffset 8}
+${color3}${font Play:size=10:bold}CPU${font}
+${color2}Name${alignr}${offset -1}ID    ${alignr}Usage
+${color1}1. ${top name 1} ${alignr}${if_match ${top cpu 1} < 10}${offset -5}${else}${offset 0}${endif}${top pid 1}    ${alignr}${top cpu 1}
+2. ${top name 2} ${alignr}${if_match ${top cpu 2} < 10}${offset -5}${else}${offset 0}${endif}${top pid 2}    ${alignr}${top cpu 2}
+3. ${top name 3} ${alignr}${if_match ${top cpu 3} < 10}${offset -5}${else}${offset 0}${endif}${top pid 3}    ${alignr}${top cpu 3}
+4. ${top name 4} ${alignr}${if_match ${top cpu 4} < 10}${offset -5}${else}${offset 0}${endif}${top pid 4}    ${alignr}${top cpu 4}
+5. ${top name 5} ${alignr}${if_match ${top cpu 5} < 10}${offset -5}${else}${offset 0}${endif}${top pid 5}    ${alignr}${top cpu 5}
+6. ${top name 6} ${alignr}${if_match ${top cpu 6} < 10}${offset -5}${else}${offset 0}${endif}${top pid 6}    ${alignr}${top cpu 6}
+
+${font Play:size=10:bold}${color3}Memory${font}
+${color2}Name${alignr}${offset -1}ID    ${alignr}Usage
+${color1}1. ${top_mem name 1} ${alignr}${if_match ${top_mem mem 1} < 10}${offset -5}${else}${offset 0}${endif}${top_mem pid 1}    ${alignr}${top_mem mem 1}
+2. ${top_mem name 2} ${alignr}${if_match ${top_mem mem 2} < 10}${offset -5}${else}${offset 0}${endif}${top_mem pid 2}    ${alignr}${top_mem mem 2}
+3. ${top_mem name 3} ${alignr}${if_match ${top_mem mem 3} < 10}${offset -5}${else}${offset 0}${endif}${top_mem pid 3}    ${alignr}${top_mem mem 3}
+4. ${top_mem name 4} ${alignr}${if_match ${top_mem mem 4} < 10}${offset -5}${else}${offset 0}${endif}${top_mem pid 4}    ${alignr}${top_mem mem 4}
+5. ${top name 5} ${alignr}${if_match ${top cpu 5} < 10}${offset -5}${else}${offset 0}${endif}${top pid 5}    ${alignr}${top cpu 5}
+6. ${top name 6} ${alignr}${if_match ${top cpu 6} < 10}${offset -5}${else}${offset 0}${endif}${top pid 6}    ${alignr}${top cpu 6}]]

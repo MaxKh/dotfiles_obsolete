@@ -1,0 +1,58 @@
+conky.config = {
+-- .conkyrc - Edited from various examples compiled from the Web
+-- by MaxKh
+
+-- --- Window Layout & Options --- #
+
+	own_window = true,
+	own_window_class = 'Conky',
+	own_window_type = 'desktop',
+	own_window_type = 'normal',
+	own_window_argb_visual = true,
+	own_window_transparent = true,
+	own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+	background = true,
+
+	double_buffer = true,
+	use_spacer = 'right',
+	use_xft = true,
+--xftalpha 1
+	alignment = 'top_left',
+	gap_x = 1450,
+	gap_y = 935,
+
+-- --- Colours, Sizes, Fonts & Margins --- #
+	update_interval = 1.0,
+	maximum_width = 250,
+	minimum_width = 300, minimum_height = 100,
+
+	stippled_borders = 3,
+	border_width = 10,
+
+-- --- Text --- #
+	draw_outline = false,
+	draw_borders = false,
+	uppercase = false,
+	draw_shades = false,
+	override_utf8_locale = true,
+	text_buffer_size = 1024,
+
+--main color
+	template0 = '73a31b',
+	template5 = '08bcd7',
+--second color
+	template1 = 'bbbbbb',
+--third color
+	template2 = 'bbbbbb',
+
+	cpu_avg_samples = 3,
+
+};
+
+conky.text = [[
+${font Play:size=14:bold}${color $template0}RAM and SWAP Usage ${hr 2}
+${font Play:size=10}${color $template1}RAM ${color $template2}${memperc}% $alignr${mem /} / ${memmax /}
+${color $template5}${membar 3.180}
+${color $template1}SWAP ${color $template2}${swapperc}% $alignr${swap /} / ${swapmax /}
+${color $template5}${swapbar 3.180}
+]];

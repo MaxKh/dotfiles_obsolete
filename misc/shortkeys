@@ -1,0 +1,7 @@
+<b>Alt + f</b>  --  Move cursor forward one word on the current line
+<b>Alt + b</b>  --  Move cursor backward one word on the current line
+<b>Alt + d</b>  --  Delete one word after the cursor
+
+<b>Ctrl + w</b>  --  Delete one word before the cursor
+<b>Ctrl + d</b> --  Delete all to the end
+<b>Ctrl + u</b>  --  Delete all from the beginning

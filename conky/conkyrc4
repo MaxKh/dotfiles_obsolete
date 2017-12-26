@@ -1,0 +1,54 @@
+conky.config = {
+-- .conkyrc - Edited from various examples compiled from the Web
+-- by MaxKh
+
+-- --- Window Layout & Options --- #
+
+	own_window = true,
+	own_window_class = 'Conky',
+	own_window_type = 'override',
+	own_window_argb_visual = true,
+	own_window_argb_value = 0,
+	own_window_transparent = false,
+	own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+	background = true,
+
+	double_buffer = true,
+	use_xft = true,
+	alignment = 'top_left',
+	gap_x = 440,
+	gap_y = 50,
+
+-- --- Colours, Sizes, Fonts & Margins --- #
+	update_interval = 1.0,
+	maximum_width = 700,
+	minimum_width = 700, minimum_height = 100,
+
+	stippled_borders = 3,
+	border_width = 10,
+
+-- --- Text --- #
+	draw_outline = false,
+	draw_borders = false,
+	uppercase = false,
+	draw_shades = false,
+	override_utf8_locale = true,
+	text_buffer_size = 2048,
+	font = 'Play:size=10',
+
+	color1 = '#bbbbbb',
+	color2 = '#08bcd7',
+	color3 = '#73a31b',
+
+};
+
+conky.text = [[
+${font Play:size=14:bold}${color3}RSS Feeds ${hr 2}${font}${voffset 8}
+${color2}${rss https://www.archlinux.org/feeds/news/ 60 feed_title}
+${color1}${rss https://www.archlinux.org/feeds/news/ 60 item_title 0}
+${rss https://www.archlinux.org/feeds/news/ 60 item_title 1}
+${rss https://www.archlinux.org/feeds/news/ 60 item_title 2}
+
+${font Play:size=14:bold}${color3}Weather ${hr 2}${font}${voffset 8}
+${execpi 60 ~/startup/weather2.py -l 4355}
+]];
